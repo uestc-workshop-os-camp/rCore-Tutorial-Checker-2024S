@@ -1,6 +1,0 @@
-expect "Test set_priority OK!"
-expect -re "get_time OK! (\\d+)"
-expect "Test sleep OK!"
-expect -re "current time_msec = (\\d+)"
-expect -re "time_msec = (\\d+) after sleeping (\\d+) ticks, delta = (\\d+)ms!"
-expect "Test sleep1 passed!"

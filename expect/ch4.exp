@@ -1,4 +1,0 @@
-expect "Test 04_1 OK!"
-expect "Test 04_4 test OK!"
-expect "Test 04_5 ummap OK!"
-expect "Test 04_6 ummap2 OK!"
