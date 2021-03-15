@@ -40,10 +40,13 @@ else ifeq ($(CHAPTER), 4)
 	CH_TESTS := $(CH4_TESTS)
 else ifeq ($(CHAPTER), 5)
 	CH_TESTS := $(CH5_TESTS)
+	INITPROC := ch5_usertest
 else ifeq ($(CHAPTER), 6)
 	CH_TESTS := $(CH6_TESTS)
+	INITPROC := ch6_usertest
 else ifeq ($(CHAPTER), 7)
 	CH_TESTS := $(CH7_TESTS)
+	INITPROC := ch7_usertest
 endif
 
 binary: $(APPS)
@@ -63,6 +66,9 @@ all: binary pre
 	@$(foreach t, $(CH_TESTS), $(CP) $(TARGET_DIR)/$(t)_*.bin $(BUILD_DIR)/bin/;)
 	@$(foreach t, $(CH_TESTS), $(CP) $(TARGET_DIR)/$(t)_*.elf $(BUILD_DIR)/elf/;)
 	@$(foreach t, $(CH_TESTS), $(CP) $(TARGET_DIR)/$(t)_*.asm $(BUILD_DIR)/asm/;)
+ifdef INITPROC
+	cp $(BUILD_DIR)/elf/$(INITPROC).elf $(BUILD_DIR)/elf/initproc.elf
+endif
 
 clean:
 	@cargo clean

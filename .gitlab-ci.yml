@@ -43,3 +43,27 @@ build-ch4-job:
   artifacts:
     paths:
       - user/build/elf/*.elf
+
+build-ch5-job:
+  stage: build
+  script:
+    - cd user && make all CHAPTER=5
+  artifacts:
+    paths:
+      - user/build/elf/*.elf
+
+build-ch6-job:
+  stage: build
+  script:
+    - cd user && make all CHAPTER=6
+  artifacts:
+    paths:
+      - user/build/elf/*.elf
+
+build-ch7-job:
+  stage: build
+  script:
+    - cd user && make all CHAPTER=7
+  artifacts:
+    paths:
+      - user/build/elf/*.elf
