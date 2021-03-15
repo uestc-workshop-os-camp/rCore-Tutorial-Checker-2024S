@@ -1,5 +1,4 @@
-import sys
-import re
+import base
 
 EXPECTED = [
     "Test set_priority OK!",
@@ -10,17 +9,5 @@ EXPECTED = [
     "Test sleep1 passed!",
 ]
 
-output = sys.stdin.read(1000000)
-
-count = 0
-total = len(EXPECTED)
-
-for pattern in EXPECTED:
-    if re.search(pattern, output):
-        count += 1
-        print('\033[92m[PASS]\033[0m', pattern)
-    else:
-        print('\033[91m[FAIL]\033[0m', pattern)
-
-print('\nTest passed: %d/%d' % (count, total))
-assert count == total
+if __name__ == '__main__':
+    base.test(EXPECTED)
