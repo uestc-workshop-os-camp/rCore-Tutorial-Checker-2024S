@@ -7,5 +7,9 @@ EXPECTED += [
     "Test link OK!",
 ]
 
+TEMP = [
+    "ch7 Usertests passed!",
+]
+
 if __name__ == '__main__':
-    base.test(EXPECTED, NOT_EXPECTED)
+    base.test(EXPECTED + TEMP, NOT_EXPECTED)

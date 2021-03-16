@@ -1,6 +1,7 @@
 import base
+from ch2 import EXPECTED
 
-EXPECTED = [
+EXPECTED += [
     "Test set_priority OK!",
     r"get_time OK! (\d+)",
     "Test sleep OK!",
