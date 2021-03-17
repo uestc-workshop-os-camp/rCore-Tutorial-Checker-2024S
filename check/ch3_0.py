@@ -1,5 +1,5 @@
 import base
-from ch2 import EXPECTED
+from ch2 import EXPECTED, NOT_EXPECTED
 
 EXPECTED += [
     "Test set_priority OK!",
@@ -11,4 +11,4 @@ EXPECTED += [
 ]
 
 if __name__ == '__main__':
-    base.test(EXPECTED)
+    base.test(EXPECTED, NOT_EXPECTED)
