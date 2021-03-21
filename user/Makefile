@@ -55,18 +55,15 @@ binary: $(APPS)
 	@$(foreach elf, $(ELFS), \
 		$(OBJCOPY) $(elf) --strip-all -O binary $(patsubst $(TARGET_DIR)/%, $(TARGET_DIR)/%.bin, $(elf)); \
 		$(CP) $(elf) $(patsubst $(TARGET_DIR)/%, $(TARGET_DIR)/%.elf, $(elf));	\
-		$(OBJDUMP) $(elf) -d > $(patsubst $(TARGET_DIR)/%, $(TARGET_DIR)/%.asm, $(elf));)
 
 pre:
 	@rm -rf $(BUILD_DIR)
 	@mkdir -p $(BUILD_DIR)/bin/
 	@mkdir -p $(BUILD_DIR)/elf/
-	@mkdir -p $(BUILD_DIR)/asm/
 	
 all: binary pre
 	@$(foreach t, $(CH_TESTS), $(CP) $(TARGET_DIR)/$(t)_*.bin $(BUILD_DIR)/bin/;)
 	@$(foreach t, $(CH_TESTS), $(CP) $(TARGET_DIR)/$(t)_*.elf $(BUILD_DIR)/elf/;)
-	@$(foreach t, $(CH_TESTS), $(CP) $(TARGET_DIR)/$(t)_*.asm $(BUILD_DIR)/asm/;)
 ifdef INITPROC
 	cp $(BUILD_DIR)/elf/$(INITPROC).elf $(BUILD_DIR)/elf/initproc.elf
 endif
