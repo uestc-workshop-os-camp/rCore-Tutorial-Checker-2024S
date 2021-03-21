@@ -54,7 +54,7 @@ binary: $(APPS)
 	@$(PY) $(BUILD_SCRIPTS) $(CHAPTER)
 	@$(foreach elf, $(ELFS), \
 		$(OBJCOPY) $(elf) --strip-all -O binary $(patsubst $(TARGET_DIR)/%, $(TARGET_DIR)/%.bin, $(elf)); \
-		$(CP) $(elf) $(patsubst $(TARGET_DIR)/%, $(TARGET_DIR)/%.elf, $(elf));	\
+		$(CP) $(elf) $(patsubst $(TARGET_DIR)/%, $(TARGET_DIR)/%.elf, $(elf));)	\
 
 pre:
 	@rm -rf $(BUILD_DIR)
