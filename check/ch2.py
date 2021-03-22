@@ -1,13 +1,19 @@
 import base
 
 EXPECTED = [
-    "Test hello_world OK!",
-    "Test power OK!",
-    "Test write1 OK!",
+    """Hello world from user mode program!
+Test hello_world OK!""",
+    """Test power OK!""",
+    """string from data section
+strinstring from stack section
+strin
+Test write1 OK!""",
 ]
 
 TEMP = [
-    "Test write0 OK!",
+    """Test write0 OK!""",
+    """Test hello_world OK!""",
+    """Test write1 OK!""",
 ]
 
 NOT_EXPECTED = [
