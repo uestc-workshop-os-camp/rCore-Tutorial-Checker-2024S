@@ -18,6 +18,10 @@ def factor(match):
 
 factors = list(map(factor, result))
 print('exitcode / priority =', factors)
-assert max(factors) / min(factors) < 1.5
 
-print('\nTest passed: 1/1')
+if max(factors) / min(factors) < 1.5:
+    print('\n\033[92m[PASS]\033[0m Stride Test')
+    print('\nTest passed: 1/1')
+else:
+    print('\n\033[91m[FAIL]\033[0m Stride Test')
+    print('\nTest passed: 0/1')
