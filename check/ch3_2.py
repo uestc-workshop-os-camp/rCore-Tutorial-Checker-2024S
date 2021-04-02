@@ -25,3 +25,4 @@ if max(factors) / min(factors) < 1.5:
 else:
     print('\n\033[91m[FAIL]\033[0m Stride Test')
     print('\nTest passed: 0/1')
+    assert False
