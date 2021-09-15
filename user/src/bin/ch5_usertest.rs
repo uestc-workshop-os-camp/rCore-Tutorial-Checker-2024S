@@ -5,8 +5,6 @@
 extern crate user_lib;
 
 static TESTS: &[&str] = &[
-    "ch2_hello_world\0",
-    "ch2_power\0",
     "ch2_write1\0",
     "ch3_0_setprio\0",
     "ch3_0_sleep\0",

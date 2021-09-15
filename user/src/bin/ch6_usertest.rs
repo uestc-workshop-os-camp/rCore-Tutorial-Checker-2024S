@@ -7,8 +7,6 @@ extern crate user_lib;
 /// 辅助测例，运行所有其他测例。
 
 static TESTS: &[&str] = &[
-    "ch2_hello_world\0",
-    "ch2_power\0",
     "ch2_write1\0",
     "ch3_0_setprio\0",
     "ch3_0_sleep\0",
@@ -19,7 +17,6 @@ static TESTS: &[&str] = &[
     "ch4_mmap3\0",
     "ch4_unmap\0",
     "ch4_unmap2\0",
-    "ch5_getpid\0",
     "ch5_spawn0\0",
     "ch5_spawn1\0",
     "ch6_mail0\0",
