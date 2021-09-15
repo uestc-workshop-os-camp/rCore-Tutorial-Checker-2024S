@@ -1,9 +1,7 @@
 import base
-import ch2
-from ch3_0 import EXPECTED, NOT_EXPECTED
 
 
-EXPECTED += [
+EXPECTED = [
     r"get_time OK! (\d+)",
     "Test sleep OK!",
     r"current time_msec = (\d+)",
@@ -15,7 +13,7 @@ EXPECTED += [
     "Test 04_6 ummap2 OK!",
 ]
 
-NOT_EXPECTED += [
+NOT_EXPECTED = [
     "Should cause error, Test 04_2 fail!",
 ]
 
