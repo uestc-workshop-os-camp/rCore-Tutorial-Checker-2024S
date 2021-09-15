@@ -9,7 +9,6 @@ SBI ?= rustsbi
 BOOTLOADER := ../bootloader/$(SBI)-$(BOARD).bin
 
 kernel:
-	cp src/linker-$(BOARD).ld src/linker.ld
 	cargo build --release
 
 clean:
