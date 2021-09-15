@@ -13,9 +13,10 @@ else:
 
 if chapter <= 6:
     os.system("cp overwrite/Makefile-ch3 ../os/Makefile")
+    os.system("cp overwrite/Cargo.toml ../os/Cargo.toml")
 else:
     os.system("cp overwrite/Makefile-ch7 ../os/Makefile")
-if chapter == 7:
     os.system("cp overwrite/easy-fs-fuse.rs ../easy-fs-fuse/src/main.rs")
+    os.system("cp overwrite/Cargo-ch7.toml ../os/Cargo.toml")
 
-os.system("cp overwrite/Cargo.toml ../os/Cargo.toml")
+    
