@@ -16,3 +16,52 @@
 
 - 一部分无用测例已删除，包括 ch2_helloworld, ch3_1_yield 等。
 - sleep 测例被转移到第四章
+- ch4 之后不再测试 write1
+
+rust 的把user测例分散到了各个branch里，当时想的是尽量把测试的过程屏蔽掉，现在看确实不便于管理，这学期就先这样算了.
+
+### 各章的测例
+
+#### ch3
+
+test1：write0 write1
+
+test2：setprio
+
+test3：stride的六个测例
+
+#### ch4
+
+test1：sleep0 sleep1 测试 sys_time
+
+test2：map0123 unmap12 测试 map unmap 实现
+
+#### ch5 6 7 8
+
+```rust
+    "test_sleep\0",
+    "test_sleep1\0",
+    "test_mmap0\0",
+    "test_mmap1\0",
+    "test_mmap2\0",
+    "test_mmap3\0",
+    "test_unmap\0",
+    "test_unmap2\0",
+    "test_spawn0\0",
+    "test_spawn1\0",
+    // ch6
+    "test_mail0\0",
+    "test_mail1\0",
+    "test_mail2\0",
+    "test_mail3\0",
+	// ch7
+    "test_file0\0",
+    "test_file1\0",
+    "test_file2\0",
+    // ch8
+    ...
+```
+
+share mem 的测例放着就行。
+
+ch8 先不管。
