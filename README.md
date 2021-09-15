@@ -1,8 +1,8 @@
 ## rCore_tutorial_v3 TESTS
 
-更新通知：make 命令经过优化，使用格式改为　`make all CHAPTER=x` 可获得第 x 章的测例。
+本项目用于为 rCore 实验进行 CI 测试，在 user 目录下 `make all CHAPTER=x` 可获得第 x 章的测例。
 
-- 可选项 2, 2_bad, 3_0, 3_1, 3_2, 4, 5, 6, 7。
+- 可选项 2, 3_0, 3_2, 4, 5, 6, 7。
 
 **重要**-加载地址更新：
 
@@ -12,4 +12,7 @@
 
 可以在 `user/build/asm` 目录下查看汇编来确认加载地址。
 
-其他内容详见 [guide](./guide.md) 。
+**测例更新**
+
+- 一部分无用测例已删除，包括 ch2_helloworld, ch3_1_yield 等。
+- sleep 测例被转移到第四章
