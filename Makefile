@@ -5,20 +5,8 @@ randomize:
 	find check -name "*.py" | xargs sed -i 's/OK/OK$(RAND)/g'
 
 test: randomize
-	if [ $(CHAPTER) -ge 4 ]; \
-	then cp overwrite/build-elf.rs ../os/build.rs; \
-	else cp overwrite/build-bin.rs ../os/build.rs; \
-	fi
-	if [ $(CHAPTER) -le 2 ]; then \
-		cp overwrite/Makefile-ch2 ../os/Makefile; \
-	elif [ $(CHAPTER) -le 6 ]; then \
-		cp overwrite/Makefile-ch3 ../os/Makefile; \
-	else \
-		cp overwrite/Makefile-ch7 ../os/Makefile; \
-	fi
-	if [ $(CHAPTER) -eq 7 ]; then \
-		cp overwrite/easy-fs-fuse.rs ../easy-fs-fuse/src/main.rs; \
-	fi
+	python3 overwrite.py $(CHAPTER)
+
 ifeq ($(CHAPTER), 3)
 	make -C user all CHAPTER=3_0
 	make -C ../os run | tee stdout-ch3_0
