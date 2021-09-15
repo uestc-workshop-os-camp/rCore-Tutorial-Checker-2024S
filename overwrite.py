@@ -1,6 +1,5 @@
 import argparse
 import os
-from typing import List
 
 parser = argparse.ArgumentParser()
 parser.add_argument("chapter", type=int)
@@ -13,10 +12,15 @@ else:
 
 if chapter <= 6:
     os.system("cp overwrite/Makefile-ch3 ../os/Makefile")
-    os.system("cp overwrite/Cargo.toml ../os/Cargo.toml")
 else:
     os.system("cp overwrite/Makefile-ch7 ../os/Makefile")
     os.system("cp overwrite/easy-fs-fuse.rs ../easy-fs-fuse/src/main.rs")
-    os.system("cp overwrite/Cargo-ch7.toml ../os/Cargo.toml")
 
-    
+lines = []
+with open("../os/Cargo.toml", 'r') as f:
+    for line in f.readlines():
+        processed = line.replace(' git = "https://github.com/rcore-os/riscv"', ' path = "../ci-user/riscv" ')
+        lines.append(processed)
+    print(lines)
+with open("../os/Cargo.toml", 'w+') as f:
+    f.writelines(lines)
