@@ -1,47 +1,4 @@
 use std::fmt::*;
-macro_rules! CSR_ACCESSOR {
-    () => {
-        r#"
-pub mod csr {{
-    pub const CSR_ID: usize = {};
-    #[inline]
-    pub unsafe fn csrrw(rs1: usize)->usize{{
-        let mut rd;
-        llvm_asm!("csrrw $0, $2, $1" :"=r"(rd): "r"(rs1), "i"(CSR_ID) :: "volatile");
-        rd
-    }}
-    #[inline]
-    pub unsafe fn csrrw_x0(rs1: usize){{
-        llvm_asm!("csrrw x0, $1, $0" :: "r"(rs1), "i"(CSR_ID) :: "volatile");
-    }}
-    #[inline]
-    pub unsafe fn csrrs(rs1: usize)->usize{{
-        let mut rd;
-        llvm_asm!("csrrs $0, $2, $1" :"=r"(rd): "r"(rs1), "i"(CSR_ID) :: "volatile");
-        rd
-    }}
-    #[inline]
-    pub unsafe fn csrrs_x0()->usize{{
-        let mut rd;
-        llvm_asm!("csrrs $0, $1, x0" :"=r"(rd): "i"(CSR_ID) :: "volatile");
-        rd
-    }}
-    #[inline]
-    pub unsafe fn csrrc(rs1: usize)->usize{{
-        let mut rd;
-        llvm_asm!("csrrc $0, $2, $1" :"=r"(rd): "r"(rs1), "i"(CSR_ID) :: "volatile");
-        rd
-    }}
-    #[inline]
-    pub unsafe fn csrrc_x0()->usize{{
-        let mut rd;
-        llvm_asm!("csrrc $0, $1, x0" :"=r"(rd): "i"(CSR_ID) :: "volatile");
-        rd
-    }}
-}}
-"#
-    };
-}
 
 macro_rules! as_str_polyfill {
     ($x: expr, $r: expr) => {{
