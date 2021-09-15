@@ -5,9 +5,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument("chapter", type=int)
 chapter = parser.parse_args().chapter
 
-if chapter >= 4:
+if 6 >= chapter >= 4:
     os.system("cp overwrite/build-elf.rs ../os/build.rs")
-else:
+elif chapter < 4:
     os.system("cp overwrite/build-bin.rs ../os/build.rs")
 
 if chapter <= 6:
