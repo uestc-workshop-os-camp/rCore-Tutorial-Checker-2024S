@@ -56,8 +56,14 @@ pre:
 	@rm -rf $(BUILD_DIR)
 	@mkdir -p $(BUILD_DIR)/bin/
 	@mkdir -p $(BUILD_DIR)/elf/
-	
-all: binary pre
+
+env:
+	(rustup target list | grep "riscv64gc-unknown-none-elf (installed)") || rustup target add $(TARGET)
+	cargo install cargo-binutils --vers ~0.2
+	rustup component add rust-src
+	rustup component add llvm-tools-preview
+
+all: env binary pre
 	@$(foreach t, $(CH_TESTS), $(CP) $(TARGET_DIR)/$(t)_*.bin $(BUILD_DIR)/bin/;)
 	@$(foreach t, $(CH_TESTS), $(CP) $(TARGET_DIR)/$(t)_*.elf $(BUILD_DIR)/elf/;)
 ifdef INITPROC
