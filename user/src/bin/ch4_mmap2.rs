@@ -21,6 +21,6 @@ fn main() -> i32 {
         // *addr = start as u8; // can't write, R == 0 && W == 1 is illegal in riscv
         assert!(*addr != 0);
     }
-    println!("Should cause error, Test 04_2 fail!");
+    println!("Should cause error, Test 04_3 fail!");
     0
 }

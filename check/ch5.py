@@ -9,7 +9,7 @@ EXPECTED += [
 ]
 
 TEMP = [
-    "ch5 Usertests passed!",
+    # "ch5 Usertests passed!",
 ]
 
 if __name__ == '__main__':

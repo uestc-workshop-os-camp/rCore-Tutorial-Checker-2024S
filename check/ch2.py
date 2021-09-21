@@ -4,7 +4,8 @@ EXPECTED = [
     """string from data section
 strinstring from stack section
 strin
-Test write1 OK!""",
+Test write1 OK!
+Test write0 OK!""",
 ]
 
 TEMP = [

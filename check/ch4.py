@@ -15,6 +15,7 @@ EXPECTED = [
 
 NOT_EXPECTED = [
     "Should cause error, Test 04_2 fail!",
+    "Should cause error, Test 04_3 fail!",
 ]
 
 if __name__ == '__main__':
