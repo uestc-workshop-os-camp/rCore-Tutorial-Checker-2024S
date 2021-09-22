@@ -3,10 +3,10 @@ import base
 
 EXPECTED = [
     """string from data section
-    strinstring from stack section
-    strin
-    Test write1 OK!
-    Test write0 OK!""",
+strinstring from stack section
+strin
+Test write1 OK!
+Test write0 OK!""",
     "Test set_priority OK!",
 ]
 NOT_EXPECTED = []
