@@ -1,26 +1,29 @@
-import base
+import sys
+import re
 
-EXPECTED = [
-    "AAAAAAAAAA [1/5]",
-    "BBBBBBBBBB [1/5]",
-    "CCCCCCCCCC [1/5]",
-    "AAAAAAAAAA [2/5]",
-    "BBBBBBBBBB [2/5]",
-    "CCCCCCCCCC [2/5]",
-    "AAAAAAAAAA [3/5]",
-    "BBBBBBBBBB [3/5]",
-    "CCCCCCCCCC [3/5]",
-    "AAAAAAAAAA [4/5]",
-    "BBBBBBBBBB [4/5]",
-    "CCCCCCCCCC [4/5]",
-    "AAAAAAAAAA [5/5]",
-    "BBBBBBBBBB [5/5]",
-    "CCCCCCCCCC [5/5]",
-    "Test write A OK!",
-    "Test write B OK!",
-    "Test write C OK!",
-]
+PATTERN = r"priority = (\d+), exitcode = (\d+)"
 
-if __name__ == '__main__':
-    base.test_str(EXPECTED)
+output = sys.stdin.read(1000000)
 
+result = re.compile(PATTERN).findall(output)
+assert len(result) == 6
+
+
+def factor(match):
+    priority, exitcode = match
+    priority = int(priority)
+    exitcode = int(exitcode)
+    return exitcode // priority
+
+
+factors = list(map(factor, result))
+print('exitcode / priority =', factors)
+value = max(factors) / min(factors)
+print(f'max / min = {value:.4f}')
+if value < 1.5:
+    print('\n\033[92m[PASS]\033[0m Stride Test')
+    print('\nTest passed: 1/1')
+else:
+    print('\n\033[91m[FAIL]\033[0m Stride Test')
+    print('\nTest passed: 0/1')
+    assert False

@@ -20,18 +20,10 @@ build-ch3_0-job:
     paths:
       - user/build/bin/*.bin
 
-# build-ch3_1-job:
-#   stage: build
-#   script:
-#     - cd user && make all CHAPTER=3_1
-#   artifacts:
-#     paths:
-#       - user/build/bin/*.bin
-
-build-ch3_2-job:
+build-ch3_1-job:
   stage: build
   script:
-    - cd user && make all CHAPTER=3_2
+    - cd user && make all CHAPTER=3_1
   artifacts:
     paths:
       - user/build/bin/*.bin

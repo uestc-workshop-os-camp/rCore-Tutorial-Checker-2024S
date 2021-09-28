@@ -27,9 +27,6 @@ else ifeq ($(CHAPTER), 3_0)
 else ifeq ($(CHAPTER), 3_1)
 	CH_TESTS := ch3_1
 	BUILD_SCRIPTS := ch3-build.py
-else ifeq ($(CHAPTER), 3_2)
-	CH_TESTS := ch3_2
-	BUILD_SCRIPTS := ch3-build.py
 else ifeq ($(CHAPTER), 4)
 	CH_TESTS := $(CH4_TESTS)
 else ifeq ($(CHAPTER), 5)
