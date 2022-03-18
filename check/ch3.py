@@ -1,12 +1,18 @@
 import base
-# from ch2 import EXPECTED, NOT_EXPECTED
+from ch2 import EXPECTED, NOT_EXPECTED
 
-EXPECTED = [
-    """
-string from task info test
-
-Test task info OK!"""
+EXPECTED += [
+    # ch3b_sleep
+    r"get_time OK! (\d+)",
+    "Test sleep OK!",
+    # ch3b_sleep1
+    r"current time_msec = (\d+)",
+    r"time_msec = (\d+) after sleeping (\d+) ticks, delta = (\d+)ms!",
+    "Test sleep1 passed!",
+    # ch3_taskinfo
+    "string from task info test",
+    "Test task info OK!",
 ]
-NOT_EXPECTED = []
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     base.test(EXPECTED, NOT_EXPECTED)
