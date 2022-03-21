@@ -6,7 +6,7 @@ randomize:
 
 test: randomize
 	python3 overwrite.py $(CHAPTER)
-	make -C user build BASE=0 TEST=$(CHAPTER) CHAPTER=$(CHAPTER)
+	make -C user build BASE=2 TEST=$(CHAPTER) CHAPTER=$(CHAPTER)
 	make -C ../os run | tee stdout-ch$(CHAPTER)
 	python3 check/ch$(CHAPTER).py < stdout-ch$(CHAPTER)
 
