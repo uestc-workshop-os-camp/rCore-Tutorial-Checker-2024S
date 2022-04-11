@@ -6,7 +6,14 @@ EXPECTED += [
     "Test spawn0 OK!",
     "Test wait OK!",
     "Test waitpid OK!",
+    "Test set_priority OK!",
 ]
+
+EXPECTED = list(set(EXPECTED) - set([
+    "Test write A OK!",
+    "Test write B OK!",
+    "Test write C OK!",
+]))
 
 TEMP = [
     # "ch5 Usertests passed!",

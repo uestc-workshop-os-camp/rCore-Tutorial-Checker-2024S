@@ -1,6 +1,6 @@
 import sys
 import re
-
+import ch5_1
 
 def test(expected, not_expected=[]):
     output = sys.stdin.read(1000000)
@@ -25,6 +25,9 @@ def test(expected, not_expected=[]):
     print('\nTest passed: %d/%d' % (count, total))
     assert count == total
 
+    # test stride
+    if re.search(ch5_1.PATTERN, output):
+        ch5_1.stride_test(re.compile(ch5_1.PATTERN).findall(output))
 
 # def test_str(expected):
 #     output = sys.stdin.read(1000000)
