@@ -17,6 +17,7 @@ test: randomize
 	make -C user build BASE=2 TEST=$(CHAPTER) CHAPTER=$(CHAPTER)
 ifdef INITPROC
 	cp user/build/elf/$(INITPROC).elf user/build/elf/ch5_initproc.elf
+endif
 	make -C ../os run | tee stdout-ch$(CHAPTER)
 	python3 check/ch$(CHAPTER).py < stdout-ch$(CHAPTER)
 
