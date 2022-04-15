@@ -1,7 +1,3 @@
-import sys
-import re
-
-
 PATTERN = r"ratio = (\d+)"
 
 def stride_test(result):
