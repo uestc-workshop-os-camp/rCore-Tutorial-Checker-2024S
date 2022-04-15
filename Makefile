@@ -1,15 +1,22 @@
 RAND := $(shell awk 'BEGIN{srand();printf("%d", 65536*rand())}')
-CHAPTER ?= 
+CHAPTER ?=
 
-ifeq ($(CHAPTER), 5)
+ifeq ($(CHAPTER), 3)
+	LAB := 1
+else ifeq ($(CHAPTER), 4)
+	LAB := 2
+else ifeq ($(CHAPTER), 5)
 	INITPROC := ch5_usertest
+	LAB := 3
 else ifeq ($(CHAPTER), 6)
 	INITPROC := ch6_usertest
+	LAB := 4
 else ifeq ($(CHAPTER), 7)
 	INITPROC := ch7_usertest
+	LAB := 4
+else ifeq ($(CHAPTER), 8)
+	LAB := 5
 endif
-
-LAB = $(shell echo $(CHAPTER)-2 | bc)
 
 randomize:
 	find user/src/bin -name "*.rs" | xargs sed -i 's/OK/OK$(RAND)/g'
@@ -24,6 +31,7 @@ endif
 	make -C ../os run | tee stdout-ch$(CHAPTER)
 	python3 check/ch$(CHAPTER).py < stdout-ch$(CHAPTER)
 
+ifdef LAB
 	@for i in $(shell seq $(LAB)); do \
 	if ! [ -f ../reports/lab$$i.pdf -o -f ../reports/lab$$i.md ]; then \
 		echo "Report for lab$$i needed. Add your report to reports/lab$$i.pdf or reports/lab$$i.md" ; \
@@ -32,5 +40,6 @@ endif
 		echo "Report for lab$$i found." ; \
 	fi; \
 	done
+endif
 
 .PHONY: test randomize
