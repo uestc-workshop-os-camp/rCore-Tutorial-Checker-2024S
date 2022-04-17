@@ -9,11 +9,10 @@ if 6 >= chapter >= 4:
     os.system("cp overwrite/build-elf.rs ../os/build.rs")
 elif chapter < 4:
     os.system("cp overwrite/build-bin.rs ../os/build.rs")
-
-if chapter <= 6:
+if chapter <= 5:
     os.system("cp overwrite/Makefile-ch3 ../os/Makefile")
 else:
-    os.system("cp overwrite/Makefile-ch7 ../os/Makefile")
+    os.system("cp overwrite/Makefile-ch6 ../os/Makefile")
     os.system("cp overwrite/easy-fs-fuse.rs ../easy-fs-fuse/src/main.rs")
 
 lines = []
