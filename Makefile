@@ -6,13 +6,13 @@ ifeq ($(CHAPTER), 3)
 else ifeq ($(CHAPTER), 4)
 	LAB := 2
 else ifeq ($(CHAPTER), 5)
-	INITPROC := ch5_usertest
+	INITPROC := 1
 	LAB := 3
 else ifeq ($(CHAPTER), 6)
-	INITPROC := ch6_usertest
+	INITPROC := 1
 	LAB := 4
 else ifeq ($(CHAPTER), 7)
-	INITPROC := ch7_usertest
+	INITPROC := 1
 	LAB := 4
 else ifeq ($(CHAPTER), 8)
 	LAB := 5
@@ -26,7 +26,7 @@ test: randomize
 	python3 overwrite.py $(CHAPTER)
 	make -C user build BASE=2 TEST=$(CHAPTER) CHAPTER=$(CHAPTER)
 ifdef INITPROC
-	cp user/build/elf/$(INITPROC).elf user/build/elf/ch5b_initproc.elf
+	cp user/build/elf/ch$(CHAPTER)_usertest.elf user/build/elf/ch$(CHAPTER)b_initproc.elf
 endif
 	make -C ../os run | tee stdout-ch$(CHAPTER)
 	python3 check/ch$(CHAPTER).py < stdout-ch$(CHAPTER)
