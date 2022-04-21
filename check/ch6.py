@@ -5,6 +5,7 @@ EXPECTED += [
     "Test file0 OK!",
     "Test fstat OK!",
     "Test link OK!",
+    "Test mass open/unlink OK!"
 ]
 
 TEMP = [
