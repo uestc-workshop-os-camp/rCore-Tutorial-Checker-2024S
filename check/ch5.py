@@ -7,7 +7,6 @@ EXPECTED += [
     "Test wait OK!",
     "Test waitpid OK!",
     "Test set_priority OK!",
-    "forktest2 test passed!"
 ]
 
 EXPECTED = list(set(EXPECTED) - set([
