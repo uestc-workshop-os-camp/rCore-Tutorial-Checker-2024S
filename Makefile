@@ -15,18 +15,21 @@ else ifeq ($(CHAPTER), 7)
 	INITPROC := 1
 	LAB := 4
 else ifeq ($(CHAPTER), 8)
+	INITPROC := 1
 	LAB := 5
 endif
 
 randomize:
 	find user/src/bin -name "*.rs" | xargs sed -i 's/OK/OK$(RAND)/g'
+	find user/src/bin -name "*.rs" | xargs sed -i 's/passed/passed$(RAND)/g'
 	find check -name "*.py" | xargs sed -i 's/OK/OK$(RAND)/g'
+	find check -name "*.py" | xargs sed -i 's/passed/passed$(RAND)/g'
 
 test: randomize
 	python3 overwrite.py $(CHAPTER)
 	make -C user build BASE=2 TEST=$(CHAPTER) CHAPTER=$(CHAPTER)
 ifdef INITPROC
-	cp user/build/elf/ch$(CHAPTER)_usertest.elf user/build/elf/ch$(CHAPTER)b_initproc.elf
+	cp -f user/build/elf/ch$(CHAPTER)_usertest.elf user/build/elf/ch$(CHAPTER)b_initproc.elf
 endif
 	make -C ../os run | tee stdout-ch$(CHAPTER)
 	python3 check/ch$(CHAPTER).py < stdout-ch$(CHAPTER)
