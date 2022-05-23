@@ -8,6 +8,10 @@ EXPECTED += [
     "Test mass open/unlink OK!"
 ]
 
+EXPECTED = list(set(EXPECTED) - set([
+    "Test set_priority OK!"
+]))
+
 TEMP = [
     # "ch6 Usertests passed!",
 ]
