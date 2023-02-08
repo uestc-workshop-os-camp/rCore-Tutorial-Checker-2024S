@@ -7,11 +7,9 @@ EXPECTED = [
     "Test power_7 OK!",
 ]
 
-TEMP = []
-
 NOT_EXPECTED = [
     "FAIL: T.T",
 ]
 
 if __name__ == "__main__":
-    base.test(EXPECTED + TEMP, NOT_EXPECTED)
+    base.test(EXPECTED, NOT_EXPECTED)
