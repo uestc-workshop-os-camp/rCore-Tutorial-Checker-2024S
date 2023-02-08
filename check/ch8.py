@@ -1,25 +1,7 @@
 import base
-from ch5 import NOT_EXPECTED
+from ch6 import EXPECTED, NOT_EXPECTED
 
-EXPECTED = [
-    # ch2b
-    "Hello, world from user mode program!",
-    "Test power_3 OK!",
-    "Test power_5 OK!",
-    "Test power_7 OK!",
-    # ch3b
-    r"get_time OK! (\d+)",
-    "Test sleep OK!",
-    r"current time_msec = (\d+)",
-    r"time_msec = (\d+) after sleeping (\d+) ticks, delta = (\d+)ms!",
-    "Test sleep1 passed!",
-    "Test write A OK!",
-    "Test write B OK!",
-    "Test write C OK!",
-    # ch5b
-    "forktest2 test passed!",
-    # ch6b
-    "file_test passed!",
+EXPECTED += [
     # ch7b
     "pipetest passed!",
     # ch8b

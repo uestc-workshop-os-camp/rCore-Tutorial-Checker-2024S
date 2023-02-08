@@ -14,8 +14,6 @@ EXPECTED += [
 
     # ch5b_forktest2.rs
     "forktest2 test passed!",
-
-    # ch5b_forktree.rs
 ]
 
 if __name__ == '__main__':

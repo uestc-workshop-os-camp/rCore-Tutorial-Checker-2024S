@@ -22,7 +22,7 @@ test:
 	python3 overwrite.py $(CHAPTER)
 	make -C user build BASE=1 TEST=$(CHAPTER) CHAPTER=$(CHAPTER)
 ifdef INITPROC
-	cp -f user/build/elf/ch$(CHAPTER)_usertest.elf user/build/elf/ch$(CHAPTER)b_initproc.elf
+	cp -f user/build/elf/ch$(CHAPTER)b_usertest.elf user/build/elf/ch$(CHAPTER)b_initproc.elf
 endif
 	make -C ../os run | tee stdout-ch$(CHAPTER)
 	python3 check/ch$(CHAPTER).py < stdout-ch$(CHAPTER)
