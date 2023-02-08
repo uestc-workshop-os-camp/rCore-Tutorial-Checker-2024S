@@ -2,21 +2,21 @@ import base
 from ch4 import EXPECTED, NOT_EXPECTED
 
 EXPECTED += [
-    r"Test getpid OK! pid = (\d+)",
-    "Test spawn0 OK!",
-    "Test wait OK!",
-    "Test waitpid OK!",
-    "Test set_priority OK!",
-]
+    # ch5b_exit.rs
+    "exit pass.",
 
-EXPECTED = list(set(EXPECTED) - set([
-    "string from task info test",
-    "Test task info OK!",
-]))
+    # ch5b_forktest_simple.rs
+    "hello child process!",
+    r"child process pid = (\d+), exit code = (\d+)",
+    
+    # ch5b_forktest.rs
+    "forktest pass.",
 
-TEMP = [
-    # "ch5 Usertests passed!",
+    # ch5b_forktest2.rs
+    "forktest2 test passed!",
+
+    # ch5b_forktree.rs
 ]
 
 if __name__ == '__main__':
-    base.test(EXPECTED + TEMP, NOT_EXPECTED)
+    base.test(EXPECTED, NOT_EXPECTED)

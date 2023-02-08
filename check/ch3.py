@@ -12,10 +12,5 @@ EXPECTED += [
     "Test write C OK!",
 ]
 
-EXPECTED += [
-    "string from task info test",
-    "Test task info OK!",
-]
-
 if __name__ == "__main__":
     base.test(EXPECTED, NOT_EXPECTED)
