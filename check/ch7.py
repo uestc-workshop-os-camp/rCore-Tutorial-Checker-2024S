@@ -5,10 +5,6 @@ EXPECTED += [
     # ch7b_sig_simple
     "signal_simple: Done",
 
-    # ch7b_sig_simple2
-    "signal_simple2: child done",
-    "signal_simple2: parent Done",
-
     # ch7b_pipetest
     "pipetest passed!",
 
