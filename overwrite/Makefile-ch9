@@ -30,5 +30,6 @@ run: kernel
 		-device virtio-blk-device,drive=x0 \
 		-device virtio-gpu-device  \
 		-device virtio-keyboard-device  \
-		-device virtio-mouse-device
+		-device virtio-mouse-device \
+		-serial stdio
 .PHONY: build kernel clean run
