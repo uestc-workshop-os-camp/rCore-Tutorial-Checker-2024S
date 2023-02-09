@@ -16,6 +16,9 @@ else ifeq ($(CHAPTER), 7)
 else ifeq ($(CHAPTER), 8)
 	INITPROC := 1
 	LAB := 5
+else ifeq ($(CHAPTER), 9)
+	INITPROC := 1
+	LAB := 6
 endif
 
 test:
