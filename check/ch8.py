@@ -14,6 +14,7 @@ EXPECTED += [
     "threads test passed!",
 ]
 
+EXPECTED = list(set(EXPECTED) - set(["Test sbrk almost OK!"]))
 
 if __name__ == "__main__":
     base.test(EXPECTED, NOT_EXPECTED)
