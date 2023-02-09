@@ -19,5 +19,5 @@ elif chapter <= 8:
     os.system("cp overwrite/Makefile-ch6 ../os/Makefile")
     os.system("cp overwrite/easy-fs-fuse-ch7.rs ../easy-fs-fuse/src/main.rs")
 elif chapter <= 9:
-    os.system("cp overwrite/Makefile-ch6 ../os/Makefile")
+    os.system("cp overwrite/Makefile-ch9 ../os/Makefile")
     os.system("cp overwrite/easy-fs-fuse-ch9.rs ../easy-fs-fuse/src/main.rs")
