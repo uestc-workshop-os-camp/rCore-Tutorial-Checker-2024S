@@ -23,6 +23,7 @@ impl BlockDevice for BlockFile {
             .expect("Error when seeking!");
         assert_eq!(file.write(buf).unwrap(), BLOCK_SZ, "Not a complete block!");
     }
+
     fn handle_irq(&self) {
         unimplemented!();
     }
@@ -39,30 +40,30 @@ fn easy_fs_pack() -> std::io::Result<()> {
                 .short("s")
                 .long("source")
                 .takes_value(true)
-                .help("Executable source dir"),
+                .help("Executable source dir(with backslash)"),
         )
         .arg(
-            Arg::with_name("output")
-                .short("o")
-                .long("output")
+            Arg::with_name("target")
+                .short("t")
+                .long("target")
                 .takes_value(true)
-                .help("Output file path"),
+                .help("Executable target dir(with backslash)"),
         )
         .get_matches();
     let src_path = matches.value_of("source").unwrap();
-    let output_path = matches.value_of("output").unwrap();
-    println!("src_path = {}\noutput_path = {}", src_path, output_path);
+    let target_path = matches.value_of("target").unwrap();
+    println!("src_path = {}\ntarget_path = {}", src_path, target_path);
     let block_file = Arc::new(BlockFile(Mutex::new({
         let f = OpenOptions::new()
             .read(true)
             .write(true)
             .create(true)
-            .open(output_path)?;
-        f.set_len(16384 * 512).unwrap();
+            .open(target_path)?;
+        f.set_len(16 * 2048 * 512).unwrap();
         f
     })));
-    // 4MiB, at most 4095 files
-    let efs = EasyFileSystem::create(block_file.clone(), 16384, 1);
+    // 16MiB, at most 4095 files
+    let efs = EasyFileSystem::create(block_file, 16 * 2048, 1);
     let root_inode = Arc::new(EasyFileSystem::root_inode(&efs));
     for dir_entry in read_dir(src_path).unwrap() {
         let dir_entry = dir_entry.unwrap();

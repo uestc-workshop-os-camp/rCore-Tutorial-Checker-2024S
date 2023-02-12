@@ -12,7 +12,7 @@ BOOTLOADER := ../bootloader/$(SBI)-$(BOARD).bin
 fsimg:
 	cd ../easy-fs-fuse && cargo run --release -- \
 		-s ../ci-user/user/build/elf \
-		-o $(FS_IMG)
+		-t $(FS_IMG)
 
 kernel: fsimg
 	cargo build --release
