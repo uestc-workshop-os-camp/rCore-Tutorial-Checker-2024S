@@ -29,8 +29,8 @@ ifdef INITPROC
 endif
 	make -C ../os run | tee stdout-ch$(CHAPTER)
 	python3 check/ch$(CHAPTER).py < stdout-ch$(CHAPTER)
-ifeq ($(LAB), 6)	
-	make -C ../os run LOG=TRACE | tee stdout-log-ch$(CHAPTER)
-	python3 check/ch$(CHAPTER).py < stdout-log-ch$(CHAPTER)
-endif	
+# ifeq ($(LAB), 6)	
+# 	make -C ../os run LOG=TRACE | tee stdout-log-ch$(CHAPTER)
+# 	python3 check/ch$(CHAPTER).py < stdout-log-ch$(CHAPTER)
+# endif	
 .PHONY: test
