@@ -1,7 +1,7 @@
 import base
 from ch6b import EXPECTED_6b, NOT_EXPECTED_4b
 
-EXPECTED_8 = EXPECTED_6b + [
+EXPECTED_9b = EXPECTED_6b + [
     # ch7b_pipetest
     "pipetest passed!",
 
@@ -25,18 +25,9 @@ EXPECTED_8 = EXPECTED_6b + [
 
     # ch8b_threads
     "threads test passed!",
-
-    # ch8_deadlock_mutex1
-    "deadlock test mutex 1 OK!",
-
-    # ch8_deadlock_sem1
-    "deadlock test semaphore 1 OK!",
-
-    # ch8_deadlock_sem2
-    "deadlock test semaphore 2 OK!",
 ]
 
-EXPECTED_8 = list(set(EXPECTED_8) - set(["Test sbrk almost OK!"]))
+EXPECTED_9b = list(set(EXPECTED_9b) - set(["Test sbrk almost OK!"]))
 
 if __name__ == "__main__":
-    base.test(EXPECTED_8, NOT_EXPECTED_4b)
+    base.test(EXPECTED_9b, NOT_EXPECTED_4b)

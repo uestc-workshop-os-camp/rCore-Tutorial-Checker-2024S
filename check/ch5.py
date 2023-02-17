@@ -1,17 +1,23 @@
 import base
-from ch4 import EXPECTED, NOT_EXPECTED
+from ch5b import EXPECTED_5b, NOT_EXPECTED_4b
+from ch4 import EXPECTED_4
 
-EXPECTED += [
-    # ch5b_exit.rs
-    "exit pass.",
+EXPECTED_5 = EXPECTED_4 + [
+    # ch5_spawn0
+    "Test spawn0 OK!",
 
-    # ch5b_forktest_simple.rs
-    "hello child process!",
-    r"child process pid = (\d+), exit code = (\d+)",
-    
-    # ch5b_forktest.rs
-    "forktest pass.",
+    # ch5_spawn1
+    "Test wait OK!",
+    "Test waitpid OK!",
+
+    # ch5_setprio
+    "Test set_priority OK!",
 ]
 
-if __name__ == '__main__':
-    base.test(EXPECTED, NOT_EXPECTED)
+EXPECTED_5 = list(set(EXPECTED_5) - set([
+    "string from task info test",
+    "Test task info OK!",
+]))
+
+if __name__ == "__main__":
+    base.test(EXPECTED_5, NOT_EXPECTED_4b)
