@@ -2,6 +2,8 @@ import sys
 import re
 
 def test(expected, not_expected=[]):
+    print(expected, not_expected)
+    
     output = sys.stdin.read(1000000)
 
     count = 0
