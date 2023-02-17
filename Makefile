@@ -1,8 +1,8 @@
 RAND := $(shell awk 'BEGIN{srand();printf("%d", 65536*rand())}')
 CHAPTER ?=
 # This is only for TAs to run base test, students do not know the token
-TOKEN_SHA1 := $(shell echo -n '$(passwd)' | sha1sum | awk -F' ' '{ print $$1 }' | xargs)
-ifeq ($(TOKEN_SHA1), 5d614163ddd6d7fec75881c9307a8512e355d9b6)
+TOKEN_SHA1 := $(shell echo -n '$(passwd)' | sha1sum | xargs | awk -F' ' '{ print $$1 }')
+ifeq ($(TOKEN_SHA1), 17713f6a49eec9ba3d8447278c41f3b56c0e10ed)
 	BASE := 1
 	BASE_CHAR := b
 else
@@ -41,6 +41,7 @@ randomize:
 	find check -name "*.py" | xargs sed -i 's/passed/passed$(RAND)/g'
 
 test: randomize
+	echo $(TOKEN_SHA1)
 	python3 overwrite.py $(CHAPTER)
 	make -C user build BASE=$(BASE) TEST=$(CHAPTER) CHAPTER=$(CHAPTER)
 ifdef INITPROC
