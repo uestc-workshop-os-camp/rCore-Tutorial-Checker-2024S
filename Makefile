@@ -2,7 +2,7 @@ RAND := $(shell awk 'BEGIN{srand();printf("%d", 65536*rand())}')
 CHAPTER ?=
 # This is only for TAs to run base test, students do not know the token
 TOKEN_SHA1 := $(shell echo -n '$(passwd)' | sha1sum | xargs | awk -F' ' '{ print $$1 }')
-ifeq ($(TOKEN_SHA1), 17713f6a49eec9ba3d8447278c41f3b56c0e10ed)
+ifeq ($(TOKEN_SHA1), 077085d7030e60f7dfc11aafec11728523b23684)
 	BASE := 1
 	BASE_CHAR := b
 else
