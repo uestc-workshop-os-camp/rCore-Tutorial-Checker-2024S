@@ -48,7 +48,9 @@ ifdef INITPROC
 	cp -f user/build/elf/ch$(CHAPTER)$(BASE_CHAR)_usertest.elf user/build/elf/ch$(CHAPTER)b_initproc.elf
 endif
 	make -C ../os run | tee stdout-ch$(CHAPTER)
+ifdef LAB
 	python3 check/ch$(CHAPTER)$(BASE_CHAR).py < stdout-ch$(CHAPTER)
+endif
 
 ifneq ($(and $(LAB),$(CHECK_REPORTS)),)
 	@for i in $(shell seq $(LAB)); do \
