@@ -35,10 +35,10 @@ else ifeq ($(CHAPTER), 9)
 endif
 
 randomize:
-	find user/src/bin -name "*.rs" | xargs sed -i 's/OK/OK$(RAND)/g'
-	find user/src/bin -name "*.rs" | xargs sed -i 's/passed/passed$(RAND)/g'
-	find check -name "*.py" | xargs sed -i 's/OK/OK$(RAND)/g'
-	find check -name "*.py" | xargs sed -i 's/passed/passed$(RAND)/g'
+	find user/src/bin -name "*.rs" | xargs -I {} sh -c 'sed -i.bak 's/OK/OK$(RAND)/g' {} && rm -rf {}.bak'
+	find user/src/bin -name "*.rs" | xargs -I {} sh -c 'sed -i.bak 's/passed/passed$(RAND)/g' {} && rm -rf {}.bak'
+	find check -name "*.py" | xargs -I {} sh -c 'sed -i.bak 's/OK/OK$(RAND)/g' {} && rm -rf {}.bak'
+	find check -name "*.py" | xargs -I {} sh -c 'sed -i.bak 's/passed/passed$(RAND)/g' {} && rm -rf {}.bak'
 
 test: randomize
 	echo $(TOKEN_SHA1)
