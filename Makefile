@@ -34,13 +34,19 @@ else ifeq ($(CHAPTER), 9)
 	LAB := 6
 endif
 
+env:
+	(rustup target list | grep "riscv64gc-unknown-none-elf (installed)") || rustup target add riscv64gc-unknown-none-elf
+	cargo install cargo-binutils
+	rustup component add rust-src
+	rustup component add llvm-tools-preview
+
 randomize:
 	find user/src/bin -name "*.rs" | xargs -I {} sh -c 'sed -i.bak 's/OK/OK$(RAND)/g' {} && rm -rf {}.bak'
 	find user/src/bin -name "*.rs" | xargs -I {} sh -c 'sed -i.bak 's/passed/passed$(RAND)/g' {} && rm -rf {}.bak'
 	find check -name "*.py" | xargs -I {} sh -c 'sed -i.bak 's/OK/OK$(RAND)/g' {} && rm -rf {}.bak'
 	find check -name "*.py" | xargs -I {} sh -c 'sed -i.bak 's/passed/passed$(RAND)/g' {} && rm -rf {}.bak'
 
-test: randomize
+test: env randomize
 	python3 overwrite.py $(CHAPTER)
 	make -C user build BASE=$(BASE) TEST=$(CHAPTER) CHAPTER=$(CHAPTER)
 ifdef INITPROC
