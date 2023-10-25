@@ -35,6 +35,7 @@ else ifeq ($(CHAPTER), 9)
 endif
 
 env:
+	rustup uninstall nightly && rustup install nightly
 	(rustup target list | grep "riscv64gc-unknown-none-elf (installed)") || rustup target add riscv64gc-unknown-none-elf
 	cargo install cargo-binutils
 	rustup component add rust-src
