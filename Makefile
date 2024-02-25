@@ -52,8 +52,6 @@ randomize:
 
 test: env randomize
 ifneq ($(OFFLINE),)
-	cp -r $(HOME)/os-vendor ../os/vendor
-	cp -r $(HOME)/user-vendor user/vendor
 	cat overwrite/os-config.toml >> ../os/.cargo/config.toml
 	cat overwrite/user-config.toml >> user/.cargo/config.toml
 endif
