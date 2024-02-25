@@ -1,8 +1,13 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."git+https://gitee.com/rcore-os/riscv"]
-git = "https://gitee.com/rcore-os/riscv"
+[source."git+https://github.com/rcore-os/riscv"]
+git = "https://github.com/rcore-os/riscv"
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/rcore-os/virtio-drivers?rev=4ee80e5"]
+git = "https://github.com/rcore-os/virtio-drivers"
+rev = "4ee80e5"
 replace-with = "vendored-sources"
 
 [source.vendored-sources]
