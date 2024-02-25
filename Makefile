@@ -1,5 +1,6 @@
 RAND := $(shell awk 'BEGIN{srand();printf("%d", 65536*rand())}')
 CHAPTER ?=
+OFFLINE :=
 # This is only for TAs to run base test, students do not know the token
 TOKEN_SHA1 := $(shell echo -n '$(passwd)' | sha1sum | xargs | awk -F' ' '{ print $$1 }')
 ifeq ($(TOKEN_SHA1), c4b6163b043b433fb9c6a3a508a9afbf67146849)
@@ -35,11 +36,13 @@ else ifeq ($(CHAPTER), 9)
 endif
 
 env:
+ifeq ($(OFFLINE),)
 	rustup uninstall nightly && rustup install nightly
 	(rustup target list | grep "riscv64gc-unknown-none-elf (installed)") || rustup target add riscv64gc-unknown-none-elf
 	cargo install cargo-binutils
 	rustup component add rust-src
 	rustup component add llvm-tools-preview
+endif
 
 randomize:
 	find user/src/bin -name "*.rs" | xargs -I {} sh -c 'sed -i.bak 's/OK/OK$(RAND)/g' {} && rm -rf {}.bak'
@@ -48,12 +51,16 @@ randomize:
 	find check -name "*.py" | xargs -I {} sh -c 'sed -i.bak 's/passed/passed$(RAND)/g' {} && rm -rf {}.bak'
 
 test: env randomize
+ifneq ($(OFFLINE),)
+	cat overwrite/os-config.toml >> ../os/.cargo/config.toml
+	cat overwrite/user-config.toml >> user/.cargo/config.toml
+endif
 	python3 overwrite.py $(CHAPTER)
 	make -C user build BASE=$(BASE) TEST=$(CHAPTER) CHAPTER=$(CHAPTER)
 ifdef INITPROC
 	cp -f user/build/elf/ch$(CHAPTER)$(BASE_CHAR)_usertest.elf user/build/elf/ch$(CHAPTER)b_initproc.elf
 endif
-	make -C ../os run | tee stdout-ch$(CHAPTER)
+	make -C ../os run OFFLINE=$(OFFLINE) | tee stdout-ch$(CHAPTER)
 ifdef LAB
 	python3 check/ch$(CHAPTER)$(BASE_CHAR).py < stdout-ch$(CHAPTER)
 endif
