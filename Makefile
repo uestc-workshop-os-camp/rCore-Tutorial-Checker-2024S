@@ -54,6 +54,7 @@ test: env randomize
 ifneq ($(OFFLINE),)
 	cat overwrite/os-config.toml >> ../os/.cargo/config.toml
 	cat overwrite/user-config.toml >> user/.cargo/config.toml
+	cp overwrite/Cargo.lock ../os/
 endif
 	python3 overwrite.py $(CHAPTER)
 	make -C user build BASE=$(BASE) TEST=$(CHAPTER) CHAPTER=$(CHAPTER)
