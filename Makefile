@@ -51,11 +51,21 @@ randomize:
 
 test: env randomize
 ifneq ($(OFFLINE),)
+	cp -r vendor/os-vendor ../os/vendor
+    cp -r vendor/user-vendor user/vendor
 	cat overwrite/os-config.toml >> ../os/.cargo/config.toml
 	cat overwrite/user-config.toml >> user/.cargo/config.toml
-	cp overwrite/Cargo.lock ../os/
+	cp overwrite/os-Cargo.lock ../os/Cargo.lock
+	cp overwrite/user-Cargo.lock user/Cargo.lock
 	cp overwrite/rust-toolchain.toml ../os/
 	cp overwrite/rust-toolchain.toml user/
+	if [ -d "../easy-fs-fuse" ]; then \
+		cp -r vendor/fuse-vendor ../easy-fs-fuse/vendor ; \
+		mkdir ../easy-fs-fuse/.cargo ; \
+		cp overwrite/user-config.toml ../easy-fs-fuse/.cargo/config.toml ; \
+		cp overwrite/fuse-Cargo.lock ../easy-fs-fuse/Cargo.lock ; \
+		cp overwrite/rust-toolchain.toml ../easy-fs-fuse/ ; \
+	fi
 endif
 	python3 overwrite.py $(CHAPTER)
 	make -C user build BASE=$(BASE) TEST=$(CHAPTER) CHAPTER=$(CHAPTER)
