@@ -54,6 +54,8 @@ ifneq ($(OFFLINE),)
 	cat overwrite/os-config.toml >> ../os/.cargo/config.toml
 	cat overwrite/user-config.toml >> user/.cargo/config.toml
 	cp overwrite/Cargo.lock ../os/
+	cp overwrite/rust-toolchain.toml ../os/
+	cp overwrite/rust-toolchain.toml user/
 endif
 	python3 overwrite.py $(CHAPTER)
 	make -C user build BASE=$(BASE) TEST=$(CHAPTER) CHAPTER=$(CHAPTER)
